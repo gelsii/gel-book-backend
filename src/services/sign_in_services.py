@@ -27,4 +27,5 @@ def authenticate_user_signing_in(response: Response, client_req: UserModelSignIn
 
     generated_token = generate_access_token({  "_id": str(user_founded['_id']) }, key=os.getenv("PRIVATE_ACCESS_TOKEN_KEY"))
 
-    response.set_cookie(key="access_token", value=generated_token["access_token"], expires=f'{expiration_date_cookie}', httponly=True, secure=True, path="/")
+    response.set_cookie(key="access_token", value=generated_token["access_token"], expires=f'{expiration_date_cookie}', httponly=True, secure=True, path="/", samesite="none")
+    

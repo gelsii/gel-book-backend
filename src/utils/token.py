@@ -31,6 +31,7 @@ def generate_access_token(additional_info: dict, key):
 
 
 def authenticate_access_token_user(key: str = private_access_token_key, token: str = Depends(security_key_cookie)):
+    print(token)
     token_exeption = HTTPException(status_code=status.HTTP_403_FORBIDDEN, detail="You don't have permission to this page.")
 
     database.db_documents_tokens_expired.delete_many({ "expire_date": { "$lte": int(datetime.now().timestamp()) } })
