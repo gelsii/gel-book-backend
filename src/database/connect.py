@@ -6,9 +6,11 @@ load_dotenv()
 
 class DatabaseClient:
     def __init__(self):
-        URI =   f'mongodb+srv://{os.getenv('USERNAME_DB')}:{os.getenv('PASSWORD_DB')}@cluster0.jcw95cy.mongodb.net/?appName=Cluster0'
+        #URI =   f'mongodb+srv://{os.getenv('USERNAME_DB')}:{os.getenv('PASSWORD_DB')}@cluster0.jcw95cy.mongodb.net/?appName=Cluster0'
         
-        self.client = MongoClient(URI)
+        self.client = MongoClient(os.getenv("DATABASE_URI"))
+
+        print("success")
     
         self.db_collection_users = self.client.get_database('users_products')
     
