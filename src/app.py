@@ -23,7 +23,7 @@ app.include_router(router=chat_router)
 
 @app.get('/api/users')
 def get_all_users():
-    users = database.find_all_users()
+    users = database.db_documents_user.find({ }, { "_id": 0 })
     return { "users": users}
 
 

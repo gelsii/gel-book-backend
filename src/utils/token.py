@@ -47,14 +47,8 @@ def authenticate_access_token_user(key: str = private_access_token_key, token: s
 
         return { "payload": decoded_token }
     except jwt.InvalidTokenError:
-        # database.db_documents_tokens_expired.insert_one({ 
-        #     "token": token, 
-        #     "expire_date": ''
-        # })
-
         raise token_exeption
     except jwt.ExpiredSignatureError:
-
         raise token_exeption
     except Exception as error:
         print(error)
